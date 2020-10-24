@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 class ListContacts extends Component {
     render () {
         return (
-            <ul>
+            <ul className='contact-list'>
                 { 
-                    this.props.data.map( user => (
-                        <li>{user.name}</li>                    
+                    this.props.contacts.map( contact => (
+                        <li key={ contact.id }>
+                            {contact.name}
+                        </li>                    
                     ))
                 }
             </ul>
