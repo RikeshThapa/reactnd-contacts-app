@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import ListContacts from './ListContacts';
+import userRegistration from './component/userRegistration';
 
 class App extends Component {
   state = {
@@ -34,10 +36,22 @@ class App extends Component {
   };
 
   render() {
+
+    let listContacts = <ListContacts contacts={this.state.contacts}  onDeleteContact={this.deleteContact}/>;
+
+
     return (
-      <div>
-        <ListContacts 
-          contacts={this.state.contacts}  onDeleteContact={this.deleteContact}/>
+      <div className="body">
+        <Route
+          exact
+          path="/"
+          render={()=> (listContacts)}
+        />
+        <Route
+          exact
+          path="/create"
+          component={userRegistration}
+        />
       </div>
     );
   }
