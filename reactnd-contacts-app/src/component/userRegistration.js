@@ -7,7 +7,6 @@ class userRegistration extends Component{
             <div>Create Contact</div>
         )
     }
-
 }
 
 
