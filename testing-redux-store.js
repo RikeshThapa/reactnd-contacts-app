@@ -7,11 +7,28 @@
 function createStore () {
 
   let state;
+  let listeners = [];
   
-  const getState = () => state
+  const getState = () => state;
+  
+  const subscribe = (listener) => {
+    listener.push(listener);
+    //adding unsubscribe function
+    //user can just invoke the unsubscribe by callign subscribe()
+    return () => {
+      listeners = listeners.filter((l) => l !== listener)
+    }
+  }
+  
+  const updateState = (...args) =>{
+   state = {...state, ...args }
+    return state
+  }
   
   return {
-    getState
+    getState,
+    updateState,
+    subscribe
   }
 
 }
